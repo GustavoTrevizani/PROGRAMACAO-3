@@ -1,0 +1,101 @@
+EXERCICIO 1: QUADRADO
+
+import turtle
+tartaruga = turtle.Turtle()
+
+tartaruga.fd (200)
+tartaruga.left (90)
+tartaruga.fd (200)
+tartaruga.left (90)
+tartaruga.fd (200)
+tartaruga.left(90)
+tartaruga.fd (200)
+
+turtle.done()
+
+-----------------------------------
+
+EXERCICIO 2: HEXAGONO
+
+import turtle
+tartaruga = turtle.Turtle()
+
+tartaruga.pendown()
+tartaruga.fd (180)
+tartaruga.left (60)
+tartaruga.fd (180)
+tartaruga.left (60)
+tartaruga.fd (180)
+tartaruga.left (60)
+tartaruga.fd (180)
+tartaruga.left (60)
+tartaruga.fd (180)
+tartaruga.left (60)
+tartaruga.fd (180)
+tartaruga.left(60)
+
+turtle.done()
+
+------------------------------------
+
+EXERCICIO 3: ESTRELA
+
+import turtle
+tartaruga = turtle.Turtle()
+
+tartaruga.pendown()
+tartaruga.fd (180)
+tartaruga.right (150)
+tartaruga.fd (200)
+tartaruga.right (145)
+tartaruga.fd (220)
+tartaruga.right (145)
+tartaruga.fd (220)
+tartaruga.right (141)
+tartaruga.fd(191)
+
+turtle.done()
+
+-----------------------------------
+
+EXERCÍCIO 4: FLOR 
+
+import turtle
+turtle = turtle.Turtle()
+
+turtle.pendown
+turtle.circle (150)
+turtle.circle (150, 20)
+turtle.right(180)
+turtle.circle (100)
+turtle.right(180)
+turtle.circle (150, 45)
+turtle.right(180)
+turtle.circle (100)
+turtle.right(180)
+turtle.circle (150, 45)
+turtle.right(180)
+turtle.circle (100)
+turtle.right(180)
+turtle.circle (150, 45)
+turtle.right(180)
+turtle.circle (100)
+turtle.right(180)
+turtle.circle (150, 45)
+turtle.right(180)
+turtle.circle (100)
+turtle.right(180)
+turtle.circle (150, 45)
+turtle.right(180)
+turtle.circle (100)
+turtle.right(180)
+turtle.circle (150, 45)
+turtle.right(180)
+turtle.circle (100)
+turtle.right(180)
+turtle.circle (150, 45)
+turtle.right(180)
+turtle.circle (100)
+turtle.right(180)
+
+turtle.done()

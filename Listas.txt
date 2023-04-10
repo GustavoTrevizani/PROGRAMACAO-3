@@ -1,0 +1,107 @@
+GUSTAVO TREVIZAN - LISTAS - EXERCÍCIO 3 - PROGRAMAÇÃO 3 - INFO 3
+------------------------------------------------------------------
+1- Crie um programa que cria a lista de Fibonacci até uma determinada posição e imprime todas os elementos da lista.
+
+fibo = [1]
+fibo.append (1)
+fibo.append (1)
+
+n = 7
+i = 10
+
+while (n < i):
+    fibo.append (fibo[-1] + fibo[-2])
+    n = n + 1
+
+print (fibo)
+
+------------------------------------------------------------------
+2- Crie um programa que recebe um número e verifica se ele é um número de Fibonacci.
+
+def eh_fibonacci(num):
+    a, b = 0, 1
+    while b < num:
+        a, b = b, a + b
+    return b == num or num == 0
+
+num = int(input("Digite um número: "))
+
+if eh_fibonacci(num):
+    print(num, "é um número de Fibonacci")
+else:
+    print(num, "não é um número de Fibonacci")
+
+------------------------------------------------------------------
+3- Crie um programa que recebe um número e imprime uma lista de Fibonacci com este número inserido, de forma ordenada (do maior para o menor número).
+
+def fibonacci_lista(num):
+    fib_lista = [0, 1]
+    while fib_lista[-1] < num:
+        fib_lista.append(fib_lista[-1] + fib_lista[-2])
+    return sorted(fib_lista, reverse=True)
+
+num = int(input("Digite um número: "))
+
+fibonacci = fibonacci_lista(num)
+
+print("Lista de Fibonacci com o número", num, "inserido:", fibonacci)
+
+------------------------------------------------------------------
+4- Crie um programa no qual o usuário vai inserindo números continuamente, até inserir o número 0. O programa então imprime a lista de números ordenadamente, 
+do maior para o menor.
+
+num_lista = []
+
+while True:
+    num = int(input("Digite um número (0 para sair): "))
+    if num == 0:
+        break
+    num_lista.append(num)
+
+sorted_lista = sorted(num_lista, reverse=True)
+
+print("Lista de números inseridos, ordenada:", sorted_lista)
+
+------------------------------------------------------------------
+5- Crie um programa que recebe uma lista de números do mesmo modo que o anterior. Agora o seu programa irá somar os números recebidos, 
+criar uma lista de Fibonacci com o mesmo número de elementos e somá-los, para então dizer qual lista tem a maior soma de elementos.
+
+def fibonacci(n):
+    # Função que retorna uma lista de Fibonacci com n elementos
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+
+numeros = []
+numero = int(input("Digite um número (0 para sair): "))
+while numero != 0:
+    numeros.append(numero)
+    numero = int(input("Digite um número (0 para sair): "))
+
+# Ordena a lista de números em ordem decrescente
+numeros.sort(reverse=True)
+
+# Imprime a lista de números ordenada
+print("Lista de números em ordem decrescente:")
+for num in numeros:
+    print(num)
+
+# Soma os elementos da lista de números
+soma_numeros = sum(numeros)
+
+# Cria a lista de Fibonacci com o mesmo número de elementos
+n = len(numeros)
+fibonacci_numeros = fibonacci(n)
+
+# Soma os elementos da lista de Fibonacci
+soma_fibonacci = sum(fibonacci_numeros)
+
+# Compara as somas e imprime a lista com a maior soma
+if soma_numeros > soma_fibonacci:
+    print("A lista de números tem a maior soma: ", soma_numeros)
+elif soma_fibonacci > soma_numeros:
+    print("A lista de Fibonacci tem a maior soma: ", soma_fibonacci)
+else:
+    print("As duas listas têm a mesma soma: ", soma_numeros)

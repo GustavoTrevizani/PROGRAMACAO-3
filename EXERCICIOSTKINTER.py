@@ -1,0 +1,111 @@
+""" 
+# 1- Crie um programa com dois botões e uma label. A label deve mostrar o texto de cada um dos botões;
+import tkinter
+janela = tkinter.Tk()
+texto = tkinter.Label (janela, text="Falar OI ou falar TCHAU?")
+janela.geometry("150x100")
+janela.title("EXERCICIOTKINTER")
+
+def Falaroi ():
+    print("OI")
+botao1 = tkinter.Button(janela, command=Falaroi, text = "Falar OI")
+
+def Falartchau ():
+    print("TCHAU")
+botao2 = tkinter.Button(janela, command=Falartchau, text = "Falar TCHAU")
+
+texto.pack()
+botao1.pack()
+botao2.pack()
+janela.mainloop() 
+"""
+
+"""
+#2- Crie um programa que possui um Button e um Label. Toda vez que o botão for clicado, o texto do Label deve ser trocado por outro;
+import tkinter
+janela = tkinter.Tk()
+texto = tkinter.Label (janela, text="Falar OI ou falar TCHAU?")
+janela.geometry("200x80")
+janela.title("EXERCICIOTKINTER")
+
+def Trocartext():
+    conteudo = texto.cget("text")
+    if conteudo == "OI":
+        texto.config (text = "TCHAU")
+    else:
+        texto.config (text = "OI")
+    
+botao1=tkinter.Button(janela, command=Trocartext, text="Trocar texto")
+
+texto.pack()
+botao1.pack()
+janela.mainloop()
+"""
+
+"""
+#3- Crie um programa com vários botões com números (pelo menos três) e uma label. Ao clicar em dois deles, a label irá mostrar a soma dos dois;
+import tkinter
+
+def CalcularX(value):
+    global num, clicked_buttons
+    num += value
+    clicked_buttons.append(value)
+    if len(clicked_buttons) == 2:
+        result = sum(clicked_buttons)
+        texto.config(text="Resultado: {}".format(result))
+        clicked_buttons.clear()
+
+janela = tkinter.Tk()
+janela.geometry("250x100")
+janela.title("EXERCICIOTKINTER")
+
+num = 0
+clicked_buttons = []
+texto = tkinter.Label(janela, text="Clique em dois botões para somar:")
+
+botao1 = tkinter.Button(janela, command=lambda: CalcularX(15), text="15")
+botao2 = tkinter.Button(janela, command=lambda: CalcularX(30), text="30")
+botao3 = tkinter.Button(janela, command=lambda: CalcularX(20), text="20")
+
+texto.pack(side="left")
+botao1.pack(side="left")
+botao2.pack(side="left")
+botao3.pack(side="left")
+
+janela.mainloop()
+"""
+
+#4- Faça um compositor de textos. O programa possui vários botões cujo conteúdo vai sendo adicionado à label a medida em que vão sendo clicados.
+import tkinter
+
+def adicionar_texto(novo_texto):
+    global texto
+    texto += novo_texto
+    texto_label.config(text=texto)
+
+def limpar_texto():
+    global texto
+    texto = ""
+    texto_label.config(text=texto)
+
+janela = tkinter.Tk()
+janela.geometry("500x200")
+janela.title("Compositor de Textos")
+
+texto = ""
+texto_label = tkinter.Label(janela, text="")
+
+botao1 = tkinter.Button(janela, command=lambda: adicionar_texto(" Oi! "), text=" Oi! ")
+botao2 = tkinter.Button(janela, command=lambda: adicionar_texto(" Tudo bem com você? "), text=" Tudo bem com você? ")
+botao3 = tkinter.Button(janela, command=lambda: adicionar_texto(" Eu espero que você esteja bem. "), text=" Eu espero que você esteja bem. ")
+botao4 = tkinter.Button(janela, command=lambda: adicionar_texto(" Foi um prazer te conhecer! "), text=" Foi um prazer te conhecer! ")
+botao_limpar = tkinter.Button(janela, command=limpar_texto, text=" Limpar ")
+
+texto_label.pack()
+botao1.pack()
+botao2.pack()
+botao3.pack()
+botao4.pack()
+botao_limpar.pack()
+
+janela.mainloop()

@@ -1,0 +1,25 @@
+------------------------------------------------------------------
+lista_val = [1, 6, 3, 7, 9, 8, 2, 3, 2, 6]
+num_procurado = 2
+contador = 0
+
+for i in lista_val:
+    if i == num_procurado:
+        contador += 1
+print (contador)
+
+----------------------------------------------------------------
+lista_val = [1, 6, 3, 7, 9, 8, 2, 3, 4, 2, 3]
+num_procurado = 3
+contador = 0
+
+for i in  range(len(lista_val)):
+    if lista_val[i] == num_procurado:
+        print (i)]
+
+----------------------------------------------------------------
+lista_val = [1, 6, 3, 7, 9, 8, 2, 3, 4, 2, 3]
+num_procurado = 3
+contador = 0
+lista_val.sort()
+print(lista_val)
