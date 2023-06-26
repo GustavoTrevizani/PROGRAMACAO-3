@@ -8,7 +8,7 @@ import os
 #senão, não faço nada
 
 def selecionar_pasta():
-    enderecp = lista_dir.get(lista_dir.curselection())
+    endereco = lista_dir.get(lista_dir.curselection())
     endereco = entrada.get() + endereco
     entrada.delete(0, 10000)
     entrada.insert(0, endereco)
