@@ -1,12 +1,18 @@
 import tkinter
 import os
 
-#def selecionar_pasta():
-    #pegar o que foi selecionado
-    #criar o endereço do que foi selecionado
-    #verificar se é uma pasta
-    #acessar se foi uma pasta
-    #senão, não faço nada
+#pegar o que foi selecionado
+#criar o endereço do que foi selecionado
+#verificar se é uma pasta
+#acessar se foi uma pasta
+#senão, não faço nada
+
+def selecionar_pasta():
+    enderecp = lista_dir.get(lista_dir.curselection())
+    endereco = entrada.get() + endereco
+    entrada.delete(0, 10000)
+    entrada.insert(0, endereco)
+    clique_botao()
 
 def clique_botao():
     lista_dir.delete(0, lista_dir.size())
@@ -25,7 +31,7 @@ janela = tkinter.Tk()
 entrada = tkinter.Entry(janela)
 botao = tkinter.Button(janela, command=clique_botao)
 lista_dir = tkinter.Listbox(janela, activestyle='dotbox',selectmode=tkinter.EXTENDED)
-#lista_dir.bind('<<ListboxSelect>>', selecionar_pasta)
+lista_dir.bind('<<ListboxSelect>>', selecionar_pasta)
 
 entrada.pack(fill='both', expand=1)
 botao.pack(fill='both', expand=1)
