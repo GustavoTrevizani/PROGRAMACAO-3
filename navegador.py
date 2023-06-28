@@ -7,9 +7,12 @@ import os
 #acessar se foi uma pasta
 #senão, não faço nada
 
-def selecionar_pasta():
+#transformar o que ele acha que é pasta, em arquivo de texto
+#quando apagar uma barra, ele tem que adicionar outra 
+
+def selecionar_pasta(arg):
     endereco = lista_dir.get(lista_dir.curselection())
-    endereco = entrada.get() + endereco
+    endereco = entrada.get() + endereco + "\\"
     entrada.delete(0, 10000)
     entrada.insert(0, endereco)
     clique_botao()
