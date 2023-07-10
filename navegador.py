@@ -1,24 +1,24 @@
 import tkinter
 import os
 
-#transformar o que ele acha que é pasta, em arquivo de texto
-#quando apagar uma barra, ele tem que adicionar outra 
+#transformar o que ele acha que é pasta, em arquivo de texto 
 
 def selecionar_pasta(arg):
-    endereco = lista_dir.get(lista_dir.curselection())
-    endereco = entrada.get() + endereco + "\\"
+    endereco = entrada.get()
+    if not endereco.endswith("\\"):
+        endereco += "\\"
+    endereco =  endereco +  lista_dir.get(lista_dir.curselection()) + "\\"
 
     # Adicionar barras invertidas extras onde necessário
     endereco = endereco.replace("\\\\", "\\")
-    if not endereco.endswith("\\"):
-        endereco += "\\"
         
-    entrada.delete(0, 10000)
-    entrada.insert(0, endereco)
-    clique_botao()
-
+    if os.path.isdir(endereco):  # Verifica se é um diretório
+        entrada.delete(0, tkinter.END)
+        entrada.insert(0, endereco)
+        clique_botao()
+    
 def clique_botao():
-    lista_dir.delete(0, lista_dir.size())
+    lista_dir.delete(0, lista_dir.size()) 
     endereco = entrada.get()
     try:
         conteudo = os.listdir(endereco)
@@ -26,10 +26,7 @@ def clique_botao():
         lista_dir.insert(0, "Pasta nao encontrada")
     else:
         for i in range(len(conteudo)):
-            #if os.path.isdir(os.path.join(endereco, conteudo[i])):
-                #conteudo[i] += ".txt"
             lista_dir.insert(i, conteudo[i])
-
 
 janela = tkinter.Tk()
 
