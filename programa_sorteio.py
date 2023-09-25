@@ -6,7 +6,7 @@ import Registro
 
 def janela_registro(lista_times):
     #janela_resposta = Registro.Registro(lista_times)
-    lista_times.append (Registro.Registro(lista_times).resposta)
+    lista_times.append (Registro.Registro(lista_times))
 
 def imprime_times():
     print(lista_times)

@@ -3,7 +3,6 @@ import Time
 import random
 
 class Registro:
-    resposta = Time.Time(1, "", "")
 
     def __init__(self, lista_times):
         self.janela = tkinter.Tk()
@@ -21,6 +20,7 @@ class Registro:
         self.botao_cadastra_jogador = tkinter.Button(self.janela, command = self.registra_jogador)
         #teste de cadastro de jogadores
 
+        self.botao_apaga_lista = tkinter.Button(self.janela, text="Apagar Lista", command = self.apaga_lista)
 
         self.label_desc_janela.grid(row=0, column =0)
 
@@ -36,6 +36,8 @@ class Registro:
         self.entry_nome_jogador.grid(row=4, column=0)
         self.botao_cadastra_jogador.grid (row=4, column=1)
 
+        self.botao_apaga_lista.grid(row=5, column=1)
+
         self.janela.mainloop()
 
     
@@ -46,10 +48,15 @@ class Registro:
         self.entry_nome_jogador.delete(0,tkinter.END)
         #Para implementar: Teste se o  jogador já está no time
 
+    def apaga_lista(self):
+        self.lista_jogadores.delete(0, tkinter.END)
+
 
     def finaliza(self, lista_times):
         #Para implementar: Modificar o numero do time
-        resposta = (1, self.entry_nome_time.get(), self.lista_jogadores.get(0, tkinter.END))
+        #resposta
+        resposta = Time.Time(1, self.entry_nome_time.get(), self.lista_jogadores.get(0, tkinter.END))
+    
         lista_times.append(resposta)
         self.janela.destroy()
    
