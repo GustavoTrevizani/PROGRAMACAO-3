@@ -52,11 +52,18 @@ class Registro:
         self.lista_jogadores.delete(0, tkinter.END)
 
 
-    def finaliza(self, lista_times):
-        #Para implementar: Modificar o numero do time
-        #resposta
-        resposta = Time.Time(1, self.entry_nome_time.get(), self.lista_jogadores.get(0, tkinter.END))
     
+    def finaliza(self, lista_times):
+        #gera um id da bib random#
+        idrandom = random.randint(1,999)
+##        #checa ver se esse id já esta na lista dos utilizados q eu criei antes#
+##        while idrandom in Registro.ids_utilizados:
+##            idrandom = random.randint(1,999)
+##        Registro.ids_utilizados.append(idrandom)
+        #se ele não tiver, ele é printado e usado naquele time#
+##        print(self.ids_utilizados)
+        resposta = Time.Time(idrandom, self.entry_nome_time.get(), self.lista_jogadores.get(0, tkinter.END))
         lista_times.append(resposta)
         self.janela.destroy()
+
    

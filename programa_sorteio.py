@@ -10,7 +10,14 @@ def janela_registro(lista_times):
 
 def imprime_times():
     print(lista_times)
-
+    file = open("base_de_dados.txt", 'w')
+    for i in lista_times:
+        file.write(str(i.id))
+        file.write(str(i.nome))
+        time_jogadores = i.jogadores
+        for j in time_jogadores:
+            file.write(j)
+    file.close()
 
 if __name__=="__main__":
     janela_geral = tkinter.Tk()
