@@ -17,6 +17,5 @@ try:
 except:
     print ("erro ao inserir")
 con.commit()
-
 res = cur.execute("SELECT * FROM times")
 print (res.fetchall())

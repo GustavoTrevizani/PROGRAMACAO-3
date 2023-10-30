@@ -1,5 +1,6 @@
 import random
 import tkinter
+import sqlite3
 
 import Time
 import Registro
@@ -11,18 +12,24 @@ def janela_registro():
 
 def grava_times():
     global lista_times
-    file = open("base_de_dados.txt", 'w')
+    try:
+        con= sqlite3.connect("tutorial.db")
+        cur = con.cursor()
+    except:
+        print("erro ao conectar")
+    cur.execute("CREATE TABLE times(id, nome, jogadores)")
     for i in lista_times:
-        file.write(str(i.id))
-        file.write(str(i.nome))
-        time_jogadores = i.jogadores
-        for j in time_jogadores:
-            file.write(j)
-    file.close()
-
+        cur.execute(f"""
+            INSERT INTO times values
+            ((i.id), "(i.nome)", "(i.jogadores)")
+            """)
+    con.commit()
+    con.close()
+    
 def carrega_times():
     global lista_times
     lista_times = []
+
     file = open("base_de_dados.txt", 'r')
     salvo = iter(file.readlines())
     for i in salvo:
@@ -43,8 +50,9 @@ def imprime_times():
 
 if __name__=="__main__":
     global lista_times
-    janela_geral = tkinter.Tk()
     lista_times = []
+
+    janela_geral = tkinter.Tk()
 
     label_geral = tkinter.Label (janela_geral, text="Janela inicial")
     botao_registra = tkinter.Button(janela_geral, text="Registra", command = janela_registro)
@@ -61,5 +69,16 @@ if __name__=="__main__":
     botao_sorteia.grid(row=4, column=0)
     botao_imprime.grid(row=5, column=0)
 
+    try:
+        con = sqlite3.connect("tutorial.db")
+        cur = con.cursor()
+    except:
+        print("erro ao conectar")
+    try:
+        cur.execute("CREATE TABLE times(id, nome, jogadores)")
+    except:
+        print("erro ao criar")
+    con.commit()
+    con.close()
 
     janela_geral.mainloop()
