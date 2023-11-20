@@ -15,25 +15,20 @@ def obter_tempo():
     temperatura_celsius = temperatura_kelvin - 273.15
 
     label_descricao.config(text=descricao)
-    label_temperatura.config(text=f"{temperatura:.2f}ºC")
+    label_temperatura.config(text=f"{temperatura_celsius:.2f}ºC")
 
-    inserir_temperatura_no_banco(temperatura_celsius)
+    con = sqlite3.connect("temperaturas.db")
+    cur = con.cursor()
 
-def criar_tabela():
-    conn = sqlite3.connect("temperaturas.db")
-    cursor = conn.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS temperaturas (id INTEGER PRIMARY KEY, temperatura REAL)")
-    conn.commit()
-    conn.close()
-
-def inserir_temperatura_no_banco(temperatura):
-    conn = sqlite3.connect("temperaturas.db")
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO temperaturas (temperatura) VALUES (?)", (temperatura,))
-    conn.commit()
-    conn.close()
-
-criar_tabela()
+    try:
+        cur.execute('''CREATE TABLE IF NOT EXISTS temp
+        (cidade, descricao_temp, temperatura)''')
+    except:
+        print (f"Erro ao criar a tabela")
+    finally:
+        cur.execute(f"INSERT INTO temp VALUES (' {cidade}', ' {descricao}', ' {temperatura_celsius:.2f}')")
+        con.commit()
+        con.close()
 
 root = tk.Tk()
 root.title("Previsão do Tempo")
